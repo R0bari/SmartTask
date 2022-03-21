@@ -1,3 +1,0 @@
-*Web app
-Stack:
-HTML, CSS, JS, ASP.NET MVC
