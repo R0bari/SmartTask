@@ -1,4 +1,6 @@
-﻿namespace SmartTask.Domain;
+﻿using System;
+
+namespace SmartTask.Domain;
 
 public record Task(
     Guid TaskId,

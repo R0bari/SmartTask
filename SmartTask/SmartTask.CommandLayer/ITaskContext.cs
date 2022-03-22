@@ -1,4 +1,6 @@
-﻿using SmartTask.Domain;
+﻿using System;
+using SmartTask.Domain;
+using System.Collections.Generic;
 using Task = SmartTask.Domain.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
