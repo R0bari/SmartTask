@@ -17,7 +17,10 @@ public class UserTests
         {
             new Device("Test PC", "135.121.74.123")
         };
-        var expectedSettings = new List<Setting>();
+        var expectedSettings = new List<Setting>
+        {
+            new Setting(SettingType.BackgroundColor, "#333")
+        };
         
         var actual = new User(
             expectedEmail,
