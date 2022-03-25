@@ -6,6 +6,6 @@ public class CreateTaskCommand
 
     public CreateTaskCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync(TaskContextSpecification specification) =>
+    public async Task<Guid> ExecuteAsync(SmartTask.Domain.Task newTask) =>
         throw new NotImplementedException();
 }

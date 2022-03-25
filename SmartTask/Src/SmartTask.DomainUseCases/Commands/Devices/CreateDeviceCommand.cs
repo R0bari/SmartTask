@@ -1,3 +1,5 @@
+using SmartTask.Domain;
+
 namespace SmartTask.DomainUseCases.Commands.Devices;
 
 public class CreateDeviceCommand
@@ -6,6 +8,6 @@ public class CreateDeviceCommand
 
     public CreateDeviceCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync() =>
+    public async Task<Guid> ExecuteAsync(Device newDevice) =>
         throw new NotImplementedException();
 }

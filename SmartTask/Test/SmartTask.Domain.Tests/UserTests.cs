@@ -11,7 +11,7 @@ public class UserTests
         var expectedCreateDate = DateTime.Now;
         var expectedTasks = new List<Task>
         {
-            new Task("testText", TaskStatus.ToDo, TaskPriority.Medium, DateTime.Now)
+            new Task("testText", TaskStatus.ToDo, TaskPriority.Medium, TaskCategory.Homework, DateTime.Now)
         };
         var expectedDevices = new List<Device>
         {

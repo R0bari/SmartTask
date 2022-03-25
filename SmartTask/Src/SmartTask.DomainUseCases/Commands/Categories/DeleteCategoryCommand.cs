@@ -6,6 +6,6 @@ public class DeleteCategoryCommand
 
     public DeleteCategoryCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync() =>
+    public async Task<int> ExecuteAsync(Guid taskId) =>
         throw new NotImplementedException();
 }

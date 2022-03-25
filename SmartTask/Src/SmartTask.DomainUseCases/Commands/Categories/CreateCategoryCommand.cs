@@ -6,6 +6,6 @@ public class CreateCategoryCommand
 
     public CreateCategoryCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync() =>
+    public async Task<Guid> ExecuteAsync(SmartTask.Domain.Task newTask) =>
         throw new NotImplementedException();
 }

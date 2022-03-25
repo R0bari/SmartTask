@@ -1,3 +1,5 @@
+using SmartTask.Domain;
+
 namespace SmartTask.DomainUseCases.Commands.Users;
 
 public class ChangeUserCommand
@@ -6,6 +8,6 @@ public class ChangeUserCommand
 
     public ChangeUserCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync() =>
+    public async Task<User> ExecuteAsync(Guid userId, User changedUser) =>
         throw new NotImplementedException();
 }

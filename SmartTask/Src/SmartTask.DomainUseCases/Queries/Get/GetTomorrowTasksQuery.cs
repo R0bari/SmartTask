@@ -1,4 +1,4 @@
-namespace SmartTask.DomainUseCases.Queries.GetCategoryTasks;
+namespace SmartTask.DomainUseCases.Queries.Get;
 
 public class GetTomorrowTasksQuery
 {

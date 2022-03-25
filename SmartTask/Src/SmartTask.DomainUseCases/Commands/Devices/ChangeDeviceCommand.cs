@@ -1,3 +1,5 @@
+using SmartTask.Domain;
+
 namespace SmartTask.DomainUseCases.Commands.Devices;
 
 public class ChangeDeviceCommand
@@ -6,6 +8,6 @@ public class ChangeDeviceCommand
 
     public ChangeDeviceCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync() =>
+    public async Task<Device> ExecuteAsync(Guid deviceId, Device changedDevice) =>
         throw new NotImplementedException();
 }

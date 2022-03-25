@@ -1,3 +1,5 @@
+using SmartTask.Domain;
+
 namespace SmartTask.DomainUseCases.Commands.Users;
 
 public class CreateUserCommand
@@ -6,6 +8,6 @@ public class CreateUserCommand
 
     public CreateUserCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync() =>
+    public async Task<Guid> ExecuteAsync(User newUser) =>
         throw new NotImplementedException();
 }
