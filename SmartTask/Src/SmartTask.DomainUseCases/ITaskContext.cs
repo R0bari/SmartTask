@@ -2,14 +2,16 @@
 using Task = SmartTask.Domain.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
-namespace SmartTask.CommandLayer;
+namespace SmartTask.DomainUseCases;
 
-public record TaskContextSpecification(
-    Guid UserId,
-    string Text,
-    DateOnly? Date,
-    TaskStatus? Status,
-    TaskPriority? Priority);
+public record TaskContextSpecification
+{
+    public Guid UserId { get; init; } = Guid.Empty;
+    public string Text { get; init; } = "";
+    public DateOnly Date { get; init; } = DateOnly.MinValue;
+    public TaskStatus Status { get; init; } = TaskStatus.None;
+    public TaskPriority Priority { get; init; } = TaskPriority.None;
+}
 
 public interface ITaskContext
 {

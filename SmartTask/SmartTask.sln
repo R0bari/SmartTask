@@ -2,11 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.Domain", "Src\SmartTask.Domain\SmartTask.Domain.csproj", "{5C6EF290-92EA-43D7-B699-6C33B542E11B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.CommandLayer", "Src\SmartTask.CommandLayer\SmartTask.CommandLayer.csproj", "{4A060EDB-75AE-4EDA-BC86-53A9F26243EB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.ApplicationLayer", "Src\SmartTask.ApplicationLayer\SmartTask.ApplicationLayer.csproj", "{F01344C1-6DA9-448C-93E0-63471EC866A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.Domain.Tests", "Test\SmartTask.Domain.Tests\SmartTask.Domain.Tests.csproj", "{57D70C22-D9D8-478D-A8C1-480E3D637153}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.DomainUseCases", "Src\SmartTask.DomainUseCases\SmartTask.DomainUseCases.csproj", "{A9D5141C-FCEC-42EB-8A98-72E46755857B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.DomainUseCases.Tests", "Test\SmartTask.DomainUseCases.Tests\SmartTask.DomainUseCases.Tests.csproj", "{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +20,6 @@ Global
 		{5C6EF290-92EA-43D7-B699-6C33B542E11B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C6EF290-92EA-43D7-B699-6C33B542E11B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C6EF290-92EA-43D7-B699-6C33B542E11B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A060EDB-75AE-4EDA-BC86-53A9F26243EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A060EDB-75AE-4EDA-BC86-53A9F26243EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A060EDB-75AE-4EDA-BC86-53A9F26243EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A060EDB-75AE-4EDA-BC86-53A9F26243EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F01344C1-6DA9-448C-93E0-63471EC866A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F01344C1-6DA9-448C-93E0-63471EC866A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F01344C1-6DA9-448C-93E0-63471EC866A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,5 +28,13 @@ Global
 		{57D70C22-D9D8-478D-A8C1-480E3D637153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57D70C22-D9D8-478D-A8C1-480E3D637153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57D70C22-D9D8-478D-A8C1-480E3D637153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D5141C-FCEC-42EB-8A98-72E46755857B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D5141C-FCEC-42EB-8A98-72E46755857B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D5141C-FCEC-42EB-8A98-72E46755857B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D5141C-FCEC-42EB-8A98-72E46755857B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
