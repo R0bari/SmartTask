@@ -6,6 +6,6 @@ public class ChangeTaskCommand
 
     public ChangeTaskCommand(ITaskContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync(Guid taskId, SmartTask.Domain.Task changedTask) =>
+    public async Task<SmartTask.Domain.Task> ExecuteAsync(Guid taskId, SmartTask.Domain.Task changedTask) =>
         throw new NotImplementedException();
 }

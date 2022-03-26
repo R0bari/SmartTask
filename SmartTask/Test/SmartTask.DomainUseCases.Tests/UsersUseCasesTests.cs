@@ -4,6 +4,11 @@ namespace SmartTask.DomainUseCases.Tests;
 
 public class UsersUseCasesTests
 {
+    public UsersUseCasesTests()
+    {
+        
+    }
+    
     [Fact]
     public void TestChangeUser()
     {

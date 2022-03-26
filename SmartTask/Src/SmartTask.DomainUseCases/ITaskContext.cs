@@ -22,6 +22,14 @@ public interface ITaskContext
     /// <returns></returns>
     List<Task> GetTasks(TaskContextSpecification taskContext);
 
+    
+    /// <summary>
+    /// Get  user task by id
+    /// </summary>
+    /// <param name="taskId"></param>
+    /// <returns></returns>
+    Task GetTaskById(Guid taskId);
+
     /// <summary>
     /// Create task
     /// </summary>
