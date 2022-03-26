@@ -1,3 +1,5 @@
+using SmartTask.DomainUseCases.Contexts;
+
 namespace SmartTask.DomainUseCases.Commands.Tasks;
 
 public class CreateTaskCommand
@@ -7,5 +9,5 @@ public class CreateTaskCommand
     public CreateTaskCommand(ITaskContext context) => _context = context;
 
     public async Task<Guid> ExecuteAsync(SmartTask.Domain.Task newTask) =>
-        throw new NotImplementedException();
+        await _context.CreateTask(newTask);
 }

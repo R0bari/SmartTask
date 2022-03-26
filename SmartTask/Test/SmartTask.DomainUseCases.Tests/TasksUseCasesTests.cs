@@ -1,6 +1,8 @@
 using Xunit;
 using SmartTask.Domain;
 using SmartTask.DomainUseCases.Commands.Tasks;
+using SmartTask.DomainUseCases.Contexts;
+using SmartTask.DomainUseCases.Tests.FakeContexts;
 using Task = System.Threading.Tasks.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
@@ -12,8 +14,7 @@ public class TasksUseCasesTests
 
     public TasksUseCasesTests()
     {
-        //  TODO: instantiate _context
-        throw new NotImplementedException();
+        _context = new FakeTaskContext();
     }
 
     [Fact]
@@ -39,6 +40,7 @@ public class TasksUseCasesTests
                     DateTime = expectedChangedDateTime
                 });
 
+        Assert.Equal(createdTask.Id, changedTask.Id);
         Assert.Equal(expectedChangedText, changedTask.Text);
         Assert.Equal(expectedChangedStatus, changedTask.Status);
         Assert.Equal(expectedChangedPriority, changedTask.Priority);
@@ -49,7 +51,7 @@ public class TasksUseCasesTests
             .ExecuteAsync(createdTask.Id);
         Assert.True(deletedTaskResult >= 0);
 
-        var deletedTask = _context.GetTaskById(createdTask.Id);
+        var deletedTask = await _context.GetTaskById(createdTask.Id);
         Assert.Equal(deletedTask, Domain.Task.Empty);
     }
 
@@ -64,13 +66,14 @@ public class TasksUseCasesTests
 
         var createdTaskId = await new CreateTaskCommand(_context)
             .ExecuteAsync(new Domain.Task(
+                Guid.NewGuid(),
                 expectedText,
                 expectedStatus,
                 expectedPriority,
                 expectedCategory,
                 expectedDateTime));
 
-        var createdTask = _context.GetTaskById(createdTaskId);
+        var createdTask = await _context.GetTaskById(createdTaskId);
 
         Assert.Equal(expectedText, createdTask.Text);
         Assert.Equal(expectedStatus, createdTask.Status);

@@ -1,4 +1,6 @@
-﻿namespace SmartTask.DomainUseCases.Queries.Get;
+﻿using SmartTask.DomainUseCases.Contexts;
+
+namespace SmartTask.DomainUseCases.Queries.Get;
 
 public class GetTodayTasksQuery
 {

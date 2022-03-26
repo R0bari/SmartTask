@@ -6,12 +6,12 @@ namespace SmartTask.Domain;
 
 public record User
 {
-    public Guid Id { get; }
-    public string Email { get; }
-    public DateTime CreateDate { get; }
-    public List<Task> Tasks { get; }
-    public List<Device> Devices { get; }
-    public List<Setting> Settings { get; }
+    public Guid Id { get; init; }
+    public string Email { get; init; }
+    public DateTime CreateDate { get; init; }
+    public List<Task> Tasks { get; init; }
+    public List<Device> Devices { get; init; }
+    public List<Setting> Settings { get; init; }
     
     public User(
         string email,
@@ -28,4 +28,3 @@ public record User
         Settings = settings;
     }
 };
-

@@ -14,7 +14,13 @@ public class TaskTests
         const TaskCategory expectedCategory = TaskCategory.Homework;
         var expectedDateTime = DateTime.Now;
         
-        var actual = new Task(expectedText, expectedStatus, expectedPriority, expectedCategory, expectedDateTime);
+        var actual = new Task(
+            Guid.NewGuid(),
+            expectedText,
+            expectedStatus,
+            expectedPriority,
+            expectedCategory,
+            expectedDateTime);
         
         Assert.Equal(expectedText, actual.Text);
         Assert.Equal(expectedStatus, actual.Status);

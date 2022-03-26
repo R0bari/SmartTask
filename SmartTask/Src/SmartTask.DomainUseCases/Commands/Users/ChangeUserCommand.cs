@@ -1,12 +1,13 @@
 using SmartTask.Domain;
+using SmartTask.DomainUseCases.Contexts;
 
 namespace SmartTask.DomainUseCases.Commands.Users;
 
 public class ChangeUserCommand
 {
-    private readonly ITaskContext _context;
+    private readonly IUserContext _context;
 
-    public ChangeUserCommand(ITaskContext context) => _context = context;
+    public ChangeUserCommand(IUserContext context) => _context = context;
 
     public async Task<User> ExecuteAsync(Guid userId, User changedUser) =>
         throw new NotImplementedException();

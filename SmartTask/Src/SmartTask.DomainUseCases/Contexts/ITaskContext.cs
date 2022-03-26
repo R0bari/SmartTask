@@ -2,13 +2,14 @@
 using Task = SmartTask.Domain.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
-namespace SmartTask.DomainUseCases;
+namespace SmartTask.DomainUseCases.Contexts;
 
 public record TaskContextSpecification
 {
     public Guid UserId { get; init; } = Guid.Empty;
     public string Text { get; init; } = "";
-    public DateOnly Date { get; init; } = DateOnly.MinValue;
+    public DateOnly MinDate { get; init; } = DateOnly.MinValue;
+    public DateOnly MaxDate { get; init; } = DateOnly.MaxValue;
     public TaskStatus Status { get; init; } = TaskStatus.None;
     public TaskPriority Priority { get; init; } = TaskPriority.None;
 }
@@ -20,7 +21,7 @@ public interface ITaskContext
     /// </summary>
     /// <param name="taskContext"></param>
     /// <returns></returns>
-    List<Task> GetTasks(TaskContextSpecification taskContext);
+    Task<List<Domain.Task>> GetTasks(TaskContextSpecification taskContext);
 
     
     /// <summary>
@@ -28,14 +29,14 @@ public interface ITaskContext
     /// </summary>
     /// <param name="taskId"></param>
     /// <returns></returns>
-    Task GetTaskById(Guid taskId);
+    Task<Domain.Task> GetTaskById(Guid taskId);
 
     /// <summary>
     /// Create task
     /// </summary>
     /// <param name="task"></param>
-    /// <returns>Id of new task</returns>
-    Guid CreateTask(Task task);
+    /// <returns>Id of new task</retuns>
+    Task<Guid> CreateTask(Task task);
     
     /// <summary>
     /// Change task text, date, status, priority
@@ -43,12 +44,12 @@ public interface ITaskContext
     /// <param name="id"></param>
     /// <param name="task"></param>
     /// <returns>Task after change</returns>
-    Task ChangeTask(Guid id, Task task);
+    Task<Domain.Task> ChangeTask(Guid id, Task task);
     
     /// <summary>
     /// Delete task by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns>Returns value more or equal to 0, if deletion succeeded</returns>
-    int DeleteTask(Guid id);
+    Task<int> DeleteTask(Guid id);
 }

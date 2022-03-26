@@ -1,14 +1,13 @@
-using SmartTask.Domain;
 using SmartTask.DomainUseCases.Contexts;
 
 namespace SmartTask.DomainUseCases.Commands.Users;
 
-public class CreateUserCommand
+public class DeleteUserCommand
 {
     private readonly IUserContext _context;
 
-    public CreateUserCommand(IUserContext context) => _context = context;
+    public DeleteUserCommand(IUserContext context) => _context = context;
 
-    public async Task<Guid> ExecuteAsync(User newUser) =>
+    public async Task<int> ExecuteAsync(Guid userId) =>
         throw new NotImplementedException();
 }

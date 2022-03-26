@@ -12,16 +12,17 @@ public record Task
     public DateTime DateTime { get; init; }
     
     public static Task Empty =>
-        new Task("", TaskStatus.None, TaskPriority.None, TaskCategory.None, DateTime.MinValue);
+        new Task(Guid.Empty, "", TaskStatus.None, TaskPriority.None, TaskCategory.None, DateTime.MinValue);
     
     public Task(
+        Guid id,
         string text,
         TaskStatus status,
         TaskPriority priority,
         TaskCategory category,
         DateTime dateTime)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         Text = text;
         Status = status;
         Priority = priority;

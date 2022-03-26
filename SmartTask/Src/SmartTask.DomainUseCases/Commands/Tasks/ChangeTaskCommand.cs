@@ -1,3 +1,5 @@
+using SmartTask.DomainUseCases.Contexts;
+
 namespace SmartTask.DomainUseCases.Commands.Tasks;
 
 public class ChangeTaskCommand
@@ -7,5 +9,5 @@ public class ChangeTaskCommand
     public ChangeTaskCommand(ITaskContext context) => _context = context;
 
     public async Task<SmartTask.Domain.Task> ExecuteAsync(Guid taskId, SmartTask.Domain.Task changedTask) =>
-        throw new NotImplementedException();
+        await _context.ChangeTask(taskId, changedTask);
 }

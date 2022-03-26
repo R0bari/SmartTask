@@ -1,3 +1,5 @@
+using SmartTask.DomainUseCases.Contexts;
+
 namespace SmartTask.DomainUseCases.Commands.Categories;
 
 public class DeleteCategoryCommand
