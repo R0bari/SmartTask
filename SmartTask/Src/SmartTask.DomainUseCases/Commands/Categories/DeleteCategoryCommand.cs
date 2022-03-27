@@ -9,5 +9,5 @@ public class DeleteCategoryCommand
     public DeleteCategoryCommand(ICategoryContext context) => _context = context;
 
     public async Task<int> ExecuteAsync(Guid taskId) =>
-        throw new NotImplementedException();
+        await _context.DeleteCategory(taskId);
 }

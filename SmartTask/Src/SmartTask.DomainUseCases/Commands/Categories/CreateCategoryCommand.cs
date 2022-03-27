@@ -1,3 +1,4 @@
+using SmartTask.Domain;
 using SmartTask.DomainUseCases.Contexts;
 
 namespace SmartTask.DomainUseCases.Commands.Categories;
@@ -8,6 +9,6 @@ public class CreateCategoryCommand
 
     public CreateCategoryCommand(ICategoryContext context) => _context = context;
 
-    public async Task<Guid> ExecuteAsync(SmartTask.Domain.Task newTask) =>
-        throw new NotImplementedException();
+    public async Task<Guid> ExecuteAsync(Category newCategory) =>
+        await _context.CreateCategory(newCategory);
 }

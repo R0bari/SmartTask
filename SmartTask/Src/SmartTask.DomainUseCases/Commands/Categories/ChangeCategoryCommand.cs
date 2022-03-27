@@ -9,6 +9,6 @@ public class ChangeCategoryCommand
 
     public ChangeCategoryCommand(ICategoryContext context) => _context = context;
 
-    public async Task<Domain.Task> ExecuteAsync(Guid taskId, Category newCategory) =>
-        throw new NotImplementedException();
+    public async Task<Category> ExecuteAsync(Guid id, Category newCategory) =>
+        await _context.ChangeCategory(id, newCategory);
 }

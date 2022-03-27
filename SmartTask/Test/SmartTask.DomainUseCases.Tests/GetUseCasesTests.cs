@@ -1,3 +1,4 @@
+using SmartTask.DomainUseCases.Contexts;
 using Xunit;
 
 namespace SmartTask.DomainUseCases.Tests;
