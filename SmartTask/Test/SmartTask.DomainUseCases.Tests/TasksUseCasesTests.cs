@@ -25,7 +25,7 @@ public class TasksUseCasesTests
         const string expectedChangedText = "changedText";
         const TaskStatus expectedChangedStatus = TaskStatus.InProgress;
         const TaskPriority expectedChangedPriority = TaskPriority.High;
-        const TaskCategory expectedChangedCategory = TaskCategory.Products;
+        var expectedChangedCategory = new Category("Products");
         var expectedChangedDateTime = DateTime.Now.AddDays(1);
 
         var changedTask = await new ChangeTaskCommand(_context)
@@ -61,7 +61,7 @@ public class TasksUseCasesTests
         const string expectedText = "testText";
         const TaskStatus expectedStatus = TaskStatus.ToDo;
         const TaskPriority expectedPriority = TaskPriority.Medium;
-        const TaskCategory expectedCategory = TaskCategory.Homework;
+        var expectedCategory = new Category("Homework");
         var expectedDateTime = DateTime.Now;
 
         var createdTaskId = await new CreateTaskCommand(_context)

@@ -8,18 +8,18 @@ public record Task
     public string Text { get; init; }
     public TaskStatus Status { get; init; }
     public TaskPriority Priority { get; init; }
-    public TaskCategory Category { get; init; }
+    public Category Category { get; init; }
     public DateTime DateTime { get; init; }
     
     public static Task Empty =>
-        new Task(Guid.Empty, "", TaskStatus.None, TaskPriority.None, TaskCategory.None, DateTime.MinValue);
+        new Task(Guid.Empty, "", TaskStatus.None, TaskPriority.None, Category.Empty, DateTime.MinValue);
     
     public Task(
         Guid id,
         string text,
         TaskStatus status,
         TaskPriority priority,
-        TaskCategory category,
+        Category category,
         DateTime dateTime)
     {
         Id = id;
@@ -33,4 +33,3 @@ public record Task
 }
 public enum TaskStatus { None, ToDo, InProgress, Done }
 public enum TaskPriority { None, Low, Medium, High }
-public enum TaskCategory { None, Products, Homework }

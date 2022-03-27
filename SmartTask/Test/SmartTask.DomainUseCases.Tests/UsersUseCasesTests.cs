@@ -48,7 +48,7 @@ public class UsersUseCasesTests
         var expectedCreateDate = DateTime.Now;
         var expectedTasks = new List<Domain.Task>
         {
-            new Domain.Task(Guid.NewGuid(),"testText", TaskStatus.ToDo, TaskPriority.Medium, TaskCategory.Homework, DateTime.Now)
+            Domain.Task.Empty
         };
         var expectedDevices = new List<Device>
         {

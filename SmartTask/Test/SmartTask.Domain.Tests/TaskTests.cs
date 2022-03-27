@@ -11,7 +11,7 @@ public class TaskTests
         const string expectedText = "testText";
         const TaskStatus expectedStatus = TaskStatus.ToDo;
         const TaskPriority expectedPriority = TaskPriority.Medium;
-        const TaskCategory expectedCategory = TaskCategory.Homework;
+        var expectedCategory = new Category("Products");
         var expectedDateTime = DateTime.Now;
         
         var actual = new Task(

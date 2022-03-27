@@ -16,7 +16,7 @@ public class UserTests
                 "testText",
                 TaskStatus.ToDo,
                 TaskPriority.Medium,
-                TaskCategory.Homework,
+                new Category("Products"),
                 DateTime.Now)
         };
         var expectedDevices = new List<Device>

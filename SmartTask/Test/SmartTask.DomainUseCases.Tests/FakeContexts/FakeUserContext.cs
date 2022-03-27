@@ -38,4 +38,13 @@ public class FakeUserContext : IUserContext
             ? Task.FromResult(-1)
             : Task.FromResult(_users.RemoveAll(user => user.Id == id));
     }
+
+    public Task<List<Device>> GetUserDevices(Guid userId) =>
+        Task.FromResult(new List<Device>());
+
+    public Task<List<Domain.Task>> GetUserTasks(Guid userId) =>
+        Task.FromResult(new List<Domain.Task>());
+
+    public Task<List<Category>> GetUserCategories(Guid userId) =>
+        Task.FromResult(new List<Category>());
 }

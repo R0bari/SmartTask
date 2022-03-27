@@ -5,10 +5,10 @@ namespace SmartTask.DomainUseCases.Commands.Categories;
 
 public class ChangeCategoryCommand
 {
-    private readonly ITaskContext _context;
+    private readonly ICategoryContext _context;
 
-    public ChangeCategoryCommand(ITaskContext context) => _context = context;
+    public ChangeCategoryCommand(ICategoryContext context) => _context = context;
 
-    public async Task<Domain.Task> ExecuteAsync(Guid taskId, TaskCategory newCategory) =>
+    public async Task<Domain.Task> ExecuteAsync(Guid taskId, Category newCategory) =>
         throw new NotImplementedException();
 }

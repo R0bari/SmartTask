@@ -32,4 +32,8 @@ public interface IUserContext
     /// <param name="id"></param>
     /// <returns>Returns value more or equal to 0, if deletion succeeded</returns>
     Task<int> DeleteUser(Guid id);
+
+    Task<List<Device>> GetUserDevices(Guid userId);
+    Task<List<Domain.Task>> GetUserTasks(Guid userId);
+    Task<List<Category>> GetUserCategories(Guid userId);
 }
