@@ -10,5 +10,5 @@ public class ChangeUserCommand
     public ChangeUserCommand(IUserContext context) => _context = context;
 
     public async Task<User> ExecuteAsync(Guid userId, User changedUser) =>
-        throw new NotImplementedException();
+        await _context.ChangeUser(userId, changedUser);
 }

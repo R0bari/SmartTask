@@ -10,5 +10,5 @@ public class CreateUserCommand
     public CreateUserCommand(IUserContext context) => _context = context;
 
     public async Task<Guid> ExecuteAsync(User newUser) =>
-        throw new NotImplementedException();
+        await _context.CreateUser(newUser);
 }

@@ -12,6 +12,14 @@ public record User
     public List<Task> Tasks { get; init; }
     public List<Device> Devices { get; init; }
     public List<Setting> Settings { get; init; }
+
+    public static User Empty =>
+        new User(
+            "",
+            DateTime.MinValue,
+            new List<Task>(),
+            new List<Device>(),
+            new List<Setting>());
     
     public User(
         string email,

@@ -7,12 +7,8 @@ namespace SmartTask.DomainUseCases.Tests.FakeContexts;
 
 public class FakeTaskContext : ITaskContext
 {
-    private readonly List<Domain.Task> _tasks;
+    private readonly List<Domain.Task> _tasks = new List<Domain.Task>();
 
-    public FakeTaskContext()
-    {
-        _tasks = new List<Domain.Task>();
-    }
     public Task<List<Domain.Task>> GetTasks(TaskContextSpecification taskContext)
     {
         var filteredTasks = _tasks;
@@ -52,10 +48,8 @@ public class FakeTaskContext : ITaskContext
         return Task.FromResult(filteredTasks);
     }
 
-    public Task<Domain.Task> GetTaskById(Guid taskId)
-    {
-        return Task.Run(() => _tasks.FirstOrDefault(task => task.Id == taskId) ?? Domain.Task.Empty);
-    }
+    public Task<Domain.Task> GetTaskById(Guid taskId) =>
+        Task.Run(() => _tasks.FirstOrDefault(task => task.Id == taskId) ?? Domain.Task.Empty);
 
     public Task<Guid> CreateTask(Domain.Task task)
     {
@@ -78,7 +72,8 @@ public class FakeTaskContext : ITaskContext
 
     public Task<int> DeleteTask(Guid id)
     {
-        return _tasks.Find(task => task.Id == id) is null
+        var found = _tasks.FirstOrDefault(t => t.Id == id) ?? Domain.Task.Empty;
+        return found == Domain.Task.Empty
             ? Task.FromResult(-1)
             : Task.FromResult(_tasks.RemoveAll(task => task.Id == id));
     }

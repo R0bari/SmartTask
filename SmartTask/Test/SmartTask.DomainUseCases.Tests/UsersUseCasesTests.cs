@@ -2,6 +2,7 @@ using Xunit;
 using SmartTask.Domain;
 using SmartTask.DomainUseCases.Commands.Users;
 using SmartTask.DomainUseCases.Contexts;
+using SmartTask.DomainUseCases.Tests.FakeContexts;
 using Task = System.Threading.Tasks.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
@@ -10,9 +11,9 @@ namespace SmartTask.DomainUseCases.Tests;
 public class UsersUseCasesTests
 {
     private readonly IUserContext _context;
-    public UsersUseCasesTests(IUserContext context)
+    public UsersUseCasesTests()
     {
-        _context = context;
+        _context = new FakeUserContext();
     }
     
     [Fact]
@@ -66,7 +67,7 @@ public class UsersUseCasesTests
                 expectedDevices,
                 expectedSettings));
 
-        var createdUser = _context.GetUserById(createdUserId);
+        var createdUser = await _context.GetUserById(createdUserId);
         
         Assert.Equal(expectedEmail, createdUser.Email);
         Assert.Equal(expectedCreateDate, createdUser.CreateDate);

@@ -9,5 +9,5 @@ public class DeleteUserCommand
     public DeleteUserCommand(IUserContext context) => _context = context;
 
     public async Task<int> ExecuteAsync(Guid userId) =>
-        throw new NotImplementedException();
+        await _context.DeleteUser(userId);
 }
