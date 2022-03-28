@@ -42,9 +42,18 @@ public class FakeUserContext : IUserContext
     public Task<List<Device>> GetUserDevices(Guid userId) =>
         Task.FromResult(new List<Device>());
 
-    public Task<List<Domain.Task>> GetUserTasks(Guid userId) =>
-        Task.FromResult(new List<Domain.Task>());
+    public Task<List<Domain.Task>> GetUserTasks(Guid userId)
+    {
+        var user = _users.FirstOrDefault(user => user.Id == userId) ?? User.Empty;
+        return Task.FromResult(
+            user == User.Empty
+                ? new List<Domain.Task>()
+                : user.Tasks);
+    }
 
-    public Task<List<Category>> GetUserCategories(Guid userId) =>
-        Task.FromResult(new List<Category>());
+    public async Task<List<Category>> GetUserCategories(Guid userId) =>
+        (await GetUserTasks(userId))
+            .Select(t => t.Category)
+            .Distinct()
+            .ToList();
 }

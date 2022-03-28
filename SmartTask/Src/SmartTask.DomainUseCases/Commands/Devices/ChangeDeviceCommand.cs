@@ -10,5 +10,5 @@ public class ChangeDeviceCommand
     public ChangeDeviceCommand(IDeviceContext context) => _context = context;
 
     public async Task<Device> ExecuteAsync(Guid deviceId, Device changedDevice) =>
-        throw new NotImplementedException();
+        await _context.ChangeDevice(deviceId, changedDevice);
 }

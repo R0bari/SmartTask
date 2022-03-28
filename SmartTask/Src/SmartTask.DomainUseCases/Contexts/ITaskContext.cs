@@ -12,6 +12,7 @@ public record TaskContextSpecification
     public DateOnly MaxDate { get; init; } = DateOnly.MaxValue;
     public TaskStatus Status { get; init; } = TaskStatus.None;
     public TaskPriority Priority { get; init; } = TaskPriority.None;
+    public Category Category { get; init; } = Category.Empty;
 }
 
 public interface ITaskContext

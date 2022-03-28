@@ -10,5 +10,5 @@ public class CreateDeviceCommand
     public CreateDeviceCommand(IDeviceContext context) => _context = context;
 
     public async Task<Guid> ExecuteAsync(Device newDevice) =>
-        throw new NotImplementedException();
+        await _context.CreateDevice(newDevice);
 }

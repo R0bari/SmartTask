@@ -14,9 +14,9 @@ public interface IDeviceContext
     /// </summary>
     /// <param name="specification"></param>
     /// <returns></returns>
-    List<Device> GetDevices(DeviceContextSpecification specification);
+    Task<Device> GetDeviceById(Guid id);
 
-    Guid CreateDevice(Device device);
+    Task<Guid> CreateDevice(Device device);
 
     /// <summary>
     /// Change device name, address
@@ -24,12 +24,12 @@ public interface IDeviceContext
     /// <param name="id"></param>
     /// <param name="device"></param>
     /// <returns></returns>
-    Device ChangeDevice(Guid id, Device device);
+    Task<Device> ChangeDevice(Guid id, Device device);
 
     /// <summary>
     /// Delete device by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    int DeleteDevice(Guid id);
+    Task<int> DeleteDevice(Guid id);
 }

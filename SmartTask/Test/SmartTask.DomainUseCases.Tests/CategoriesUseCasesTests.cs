@@ -8,12 +8,7 @@ namespace SmartTask.DomainUseCases.Tests;
 
 public class CategoriesUseCasesTests
 {
-    private readonly ICategoryContext _context;
-
-    public CategoriesUseCasesTests()
-    {
-        _context = new FakeCategoryContext();
-    }
+    private readonly ICategoryContext _context = new FakeCategoryContext();
 
     [Fact]
     public async void TestCategoryCrud()
@@ -26,7 +21,7 @@ public class CategoriesUseCasesTests
             .ExecuteAsync(
                 createdCategory.Id,
                 createdCategory with {Name = expectedChangedName});
-        
+
         Assert.Equal(createdCategory.Id, changedCategory.Id);
         Assert.Equal(expectedChangedName, changedCategory.Name);
 
@@ -47,7 +42,7 @@ public class CategoriesUseCasesTests
             .ExecuteAsync(new Category(expectedName));
 
         var createdCategory = await _context.GetCategoryById(createdCategoryId);
-        
+
         Assert.Equal(expectedName, createdCategory.Name);
 
         return createdCategory;
