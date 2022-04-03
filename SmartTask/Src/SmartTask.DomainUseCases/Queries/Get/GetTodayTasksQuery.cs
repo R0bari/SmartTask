@@ -4,13 +4,14 @@ namespace SmartTask.DomainUseCases.Queries.Get;
 
 public class GetTodayTasksQuery
 {
-    private readonly ITaskContext _context;
+    private readonly DateTime _tomorrow = DateTime.Today.AddDays(1);
+    private readonly IUserContext _context;
 
-    public GetTodayTasksQuery(ITaskContext context) => _context = context;
+    public GetTodayTasksQuery(IUserContext context) => _context = context;
     
     public async Task<List<SmartTask.Domain.Task>> ExecuteAsync(Guid userId) =>
-        await Task.Run(() => _context.GetTasks(new TaskContextSpecification
-        {
-            UserId = userId
-        }));
+        (await _context.GetUserTasks(userId)
+            .ConfigureAwait(false))
+        .Where(t => t.DateTime >= DateTime.Today && t.DateTime <= _tomorrow)
+        .ToList();
 }
