@@ -3,7 +3,6 @@ using SmartTask.DomainUseCases.Contexts;
 using SmartTask.DomainUseCases.Queries.Get;
 using SmartTask.DomainUseCases.Tests.FakeContexts;
 using Xunit;
-using Task = System.Threading.Tasks.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
 namespace SmartTask.DomainUseCases.Tests;
