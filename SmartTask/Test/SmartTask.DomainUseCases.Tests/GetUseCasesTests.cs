@@ -3,29 +3,27 @@ using SmartTask.DomainUseCases.Contexts;
 using SmartTask.DomainUseCases.Queries.Get;
 using SmartTask.DomainUseCases.Tests.FakeContexts;
 using Xunit;
-using Task = System.Threading.Tasks.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
 namespace SmartTask.DomainUseCases.Tests;
 
 public class GetUseCasesTests
 {
-    private readonly ITaskContext _taskContext = new FakeTaskContext();
     private readonly IUserContext _userContext = new FakeUserContext();
-    private readonly User user;
+    private readonly User _user;
 
     public GetUseCasesTests()
     {
-        user = new User(
+        _user = new User(
             "short@email.com",
             DateTime.Now,
             PrepareTaskList(),
             new List<Device>(),
             new List<Setting>());
-        user = user with {Id = _userContext.CreateUser(user).GetAwaiter().GetResult()};
+        _user = _user with {Id = _userContext.CreateUser(_user).GetAwaiter().GetResult()};
     }
 
-    private List<Domain.Task> PrepareTaskList() =>
+    private static List<Domain.Task> PrepareTaskList() =>
         new List<Domain.Task>()
         {
             new Domain.Task(
@@ -51,18 +49,25 @@ public class GetUseCasesTests
                 DateTime.Today.Subtract(new TimeSpan(1, 0, 0, 0))),
             new Domain.Task(
                 Guid.NewGuid(),
-                "cook chicken",
+                "walk in the park",
                 TaskStatus.InProgress,
-                TaskPriority.Medium,
-                new Category("Homework"),
-                DateTime.Now.Subtract(new TimeSpan(2, 0, 0, 0))),
+                TaskPriority.Low,
+                new Category("Outdoor"),
+                DateTime.Today.Subtract(new TimeSpan(0, 5, 0, 0))),
             new Domain.Task(
                 Guid.NewGuid(),
                 "cook chicken",
                 TaskStatus.InProgress,
                 TaskPriority.Medium,
                 new Category("Homework"),
-                DateTime.Now.Subtract(new TimeSpan(2, 0, 0, 0)))
+                DateTime.Today.AddDays(1).AddHours(2)),
+            new Domain.Task(
+                Guid.NewGuid(),
+                "cook chicken",
+                TaskStatus.InProgress,
+                TaskPriority.Medium,
+                new Category("Homework"),
+                DateTime.Now.AddDays(2))
         };
 
     [Fact]
@@ -70,7 +75,7 @@ public class GetUseCasesTests
     {
         var specification = new TaskContextSpecification
         {
-            UserId = user.Id,
+            UserId = _user.Id,
             Category = new Category("Homework")
         };
         var categoryTasks = await new GetCategoryTasksQuery(_userContext)
@@ -80,33 +85,48 @@ public class GetUseCasesTests
     }
     
     [Fact]
-    public void GetCompletedTasks()
+    public async void GetCompletedTasks()
     {
-        throw new NotImplementedException();
+        var completedTasks = await new GetCompletedTasksQuery(_userContext)
+            .ExecuteAsync(_user.Id);
+        
+        Assert.Single(completedTasks);
     }
     
     [Fact]
-    public void GetFutureTasks()
+    public async void GetFutureTasks()
     {
-        throw new NotImplementedException();
+        var futureTasks = await new GetFutureTasksQuery(_userContext)
+            .ExecuteAsync(_user.Id);
+        
+        Assert.Equal(2, futureTasks.Count);
     }
     
     
     [Fact]
-    public void GetTodayTasks()
+    public async void GetTodayTasks()
     {
-        throw new NotImplementedException();
+        var todayTasks = await new GetTodayTasksQuery(_userContext)
+            .ExecuteAsync(_user.Id);
+
+        Assert.Equal(2, todayTasks.Count);
     }
     
     [Fact]
-    public void GetTomorrowTasks()
+    public async void GetTomorrowTasks()
     {
-        throw new NotImplementedException();
+        var tomorrowTasks = await new GetTomorrowTasksQuery(_userContext)
+            .ExecuteAsync(_user.Id);
+
+        Assert.Single(tomorrowTasks);
     }
     
     [Fact]
-    public void GetUncompletedTasks()
+    public async void GetUncompletedTasks()
     {
-        throw new NotImplementedException();
+        var tomorrowTasks = await new GetUncompletedTasksQuery(_userContext)
+            .ExecuteAsync(_user.Id);
+
+        Assert.Single(tomorrowTasks);
     }
 }

@@ -1,13 +1,17 @@
 using SmartTask.DomainUseCases.Contexts;
+using TaskStatus = SmartTask.Domain.TaskStatus;
 
 namespace SmartTask.DomainUseCases.Queries.Get;
 
 public class GetCompletedTasksQuery
 {
-    private readonly ITaskContext _context;
+    private readonly IUserContext _context;
 
-    public GetCompletedTasksQuery(ITaskContext context) => _context = context;
+    public GetCompletedTasksQuery(IUserContext context) => _context = context;
 
-    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync(TaskContextSpecification specification) =>
-        throw new NotImplementedException();
+    public async Task<List<SmartTask.Domain.Task>> ExecuteAsync(Guid userId) =>
+        (await _context.GetUserTasks(userId)
+            .ConfigureAwait(false))
+        .Where(t => t.Status == TaskStatus.Done)
+        .ToList();
 }
