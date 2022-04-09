@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.DomainUseCases", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.DomainUseCases.Tests", "Test\SmartTask.DomainUseCases.Tests\SmartTask.DomainUseCases.Tests.csproj", "{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTask.MSSQL", "Src\SmartTask.MSSQL\SmartTask.MSSQL.csproj", "{AFDFBEF6-0486-449D-A173-DD4958AB08DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ED74FFC-95F8-4FCB-9C2E-BA4785C13698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFDFBEF6-0486-449D-A173-DD4958AB08DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDFBEF6-0486-449D-A173-DD4958AB08DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDFBEF6-0486-449D-A173-DD4958AB08DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDFBEF6-0486-449D-A173-DD4958AB08DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
