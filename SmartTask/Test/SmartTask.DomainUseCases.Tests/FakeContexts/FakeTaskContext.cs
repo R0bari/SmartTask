@@ -1,7 +1,5 @@
-using SmartTask.Domain;
 using SmartTask.DomainUseCases.Contexts;
 using Task = System.Threading.Tasks.Task;
-using TaskStatus = SmartTask.Domain.TaskStatus;
 
 namespace SmartTask.DomainUseCases.Tests.FakeContexts;
 
@@ -28,23 +26,24 @@ public class FakeTaskContext : ITaskContext
 
         filteredTasks = filteredTasks
             .Where(task =>
-                task.DateTime >= taskContext.MinDate.ToDateTime(TimeOnly.MinValue) && task.DateTime <= taskContext.MaxDate.ToDateTime(TimeOnly.MaxValue))
+                task.DateTime >= taskContext.MinDate.ToDateTime(TimeOnly.MinValue) &&
+                task.DateTime <= taskContext.MaxDate.ToDateTime(TimeOnly.MaxValue))
             .ToList();
 
-        if (taskContext.Status != TaskStatus.None)
+        if (taskContext.Status.Name != "None")
         {
             filteredTasks = filteredTasks
                 .Where(task => task.Status == taskContext.Status)
                 .ToList();
         }
-        
-        if (taskContext.Priority != TaskPriority.None)
+
+        if (taskContext.Priority.Name != "None")
         {
             filteredTasks = filteredTasks
                 .Where(task => task.Priority == taskContext.Priority)
                 .ToList();
         }
-        
+
         return Task.FromResult(filteredTasks);
     }
 
@@ -65,6 +64,7 @@ public class FakeTaskContext : ITaskContext
         {
             return Task.FromResult(Domain.Task.Empty);
         }
+
         foundTask = task;
 
         return Task.FromResult(foundTask);

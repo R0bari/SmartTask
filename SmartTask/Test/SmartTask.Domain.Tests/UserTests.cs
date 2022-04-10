@@ -8,37 +8,37 @@ public class UserTests
     public void TestConstructor()
     {
         const string expectedEmail = "test@email.com";
-        var expectedCreateDate = DateTime.Now;
-        var expectedTasks = new List<Task>
+        var createDate = DateTime.Now;
+        var tasks = new List<Task>
         {
             new Task(
                 Guid.NewGuid(),
                 "testText",
-                TaskStatus.ToDo,
-                TaskPriority.Medium,
+                new TaskStatus(Guid.NewGuid(), "ToDo"),
+                new TaskPriority(Guid.NewGuid(), "Medium"),
                 new Category("Products"),
                 DateTime.Now)
         };
-        var expectedDevices = new List<Device>
+        var devices = new List<Device>
         {
             new Device("Test PC", "135.121.74.123")
         };
-        var expectedSettings = new List<Setting>
+        var settings = new List<Setting>
         {
             new Setting(SettingType.BackgroundColor, "#333")
         };
         
         var actual = new User(
             expectedEmail,
-            expectedCreateDate,
-            expectedTasks,
-            expectedDevices,
-            expectedSettings);
+            createDate,
+            tasks,
+            devices,
+            settings);
         
         Assert.Equal(expectedEmail, actual.Email);
-        Assert.Equal(expectedCreateDate, actual.CreateDate);
-        Assert.Equal(expectedTasks, actual.Tasks);
-        Assert.Equal(expectedDevices, actual.Devices);
-        Assert.Equal(expectedSettings, actual.Settings);
+        Assert.Equal(createDate, actual.CreateDate);
+        Assert.Equal(tasks, actual.Tasks);
+        Assert.Equal(devices, actual.Devices);
+        Assert.Equal(settings, actual.Settings);
     }
 }

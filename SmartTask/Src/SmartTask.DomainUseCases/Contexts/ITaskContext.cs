@@ -1,5 +1,4 @@
 ﻿using SmartTask.Domain;
-using Task = SmartTask.Domain.Task;
 using TaskStatus = SmartTask.Domain.TaskStatus;
 
 namespace SmartTask.DomainUseCases.Contexts;
@@ -10,8 +9,8 @@ public record TaskContextSpecification
     public string Text { get; init; } = "";
     public DateOnly MinDate { get; init; } = DateOnly.MinValue;
     public DateOnly MaxDate { get; init; } = DateOnly.MaxValue;
-    public TaskStatus Status { get; init; } = TaskStatus.None;
-    public TaskPriority Priority { get; init; } = TaskPriority.None;
+    public TaskStatus Status { get; init; } = TaskStatus.Empty;
+    public TaskPriority Priority { get; init; } = TaskPriority.Empty;
     public Category Category { get; init; } = Category.Empty;
 }
 
@@ -37,7 +36,7 @@ public interface ITaskContext
     /// </summary>
     /// <param name="task"></param>
     /// <returns>Id of new task</retuns>
-    Task<Guid> CreateTask(Task task);
+    Task<Guid> CreateTask(Domain.Task task);
     
     /// <summary>
     /// Change task text, date, status, priority
@@ -45,7 +44,7 @@ public interface ITaskContext
     /// <param name="id"></param>
     /// <param name="task"></param>
     /// <returns>Task after change</returns>
-    Task<Domain.Task> ChangeTask(Guid id, Task task);
+    Task<Domain.Task> ChangeTask(Guid id, Domain.Task task);
     
     /// <summary>
     /// Delete task by id

@@ -9,23 +9,23 @@ public class TaskTests
     public void TestConstructor()
     {
         const string expectedText = "testText";
-        const TaskStatus expectedStatus = TaskStatus.ToDo;
-        const TaskPriority expectedPriority = TaskPriority.Medium;
-        var expectedCategory = new Category("Products");
-        var expectedDateTime = DateTime.Now;
+        var status = new TaskStatus(Guid.NewGuid(), "ToDo");
+        var priority = new TaskPriority(Guid.NewGuid(), "Medium");
+        var category = new Category("Products");
+        var dateTime = DateTime.Now;
         
         var actual = new Task(
             Guid.NewGuid(),
             expectedText,
-            expectedStatus,
-            expectedPriority,
-            expectedCategory,
-            expectedDateTime);
+            status,
+            priority,
+            category,
+            dateTime);
         
         Assert.Equal(expectedText, actual.Text);
-        Assert.Equal(expectedStatus, actual.Status);
-        Assert.Equal(expectedPriority, actual.Priority);
-        Assert.Equal(expectedCategory, actual.Category);
-        Assert.Equal(expectedDateTime, actual.DateTime);
+        Assert.Equal(status, actual.Status);
+        Assert.Equal(priority, actual.Priority);
+        Assert.Equal(category, actual.Category);
+        Assert.Equal(dateTime, actual.DateTime);
     }
 }

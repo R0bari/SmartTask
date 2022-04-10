@@ -12,7 +12,13 @@ public record Task
     public DateTime DateTime { get; init; }
     
     public static Task Empty =>
-        new Task(Guid.Empty, "", TaskStatus.None, TaskPriority.None, Category.Empty, DateTime.MinValue);
+        new Task(
+            Guid.Empty,
+            "",
+            TaskStatus.Empty,
+            TaskPriority.Empty,
+            Category.Empty,
+            DateTime.MinValue);
     
     public Task(
         Guid id,
@@ -31,5 +37,3 @@ public record Task
     }
 
 }
-public enum TaskStatus { None, ToDo, InProgress, Done }
-public enum TaskPriority { None, Low, Medium, High }

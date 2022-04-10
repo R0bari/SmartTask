@@ -23,10 +23,10 @@ public class TasksUseCasesTests
         var createdTask = await TestCreateTask();
         
         const string expectedChangedText = "changedText";
-        const TaskStatus expectedChangedStatus = TaskStatus.InProgress;
-        const TaskPriority expectedChangedPriority = TaskPriority.High;
-        var expectedChangedCategory = new Category("Products");
-        var expectedChangedDateTime = DateTime.Now.AddDays(1);
+        var changedStatus = new TaskStatus(Guid.NewGuid(), "InProgress");
+        var changedPriority = new TaskPriority(Guid.NewGuid(), "High");
+        var changedCategory = new Category("Products");
+        var changedDateTime = DateTime.Now.AddDays(1);
 
         var changedTask = await new ChangeTaskCommand(_context)
             .ExecuteAsync(
@@ -34,18 +34,18 @@ public class TasksUseCasesTests
                 createdTask with
                 {
                     Text = expectedChangedText,
-                    Status = expectedChangedStatus,
-                    Priority = expectedChangedPriority,
-                    Category = expectedChangedCategory,
-                    DateTime = expectedChangedDateTime
+                    Status = changedStatus,
+                    Priority = changedPriority,
+                    Category = changedCategory,
+                    DateTime = changedDateTime
                 });
 
         Assert.Equal(createdTask.Id, changedTask.Id);
         Assert.Equal(expectedChangedText, changedTask.Text);
-        Assert.Equal(expectedChangedStatus, changedTask.Status);
-        Assert.Equal(expectedChangedPriority, changedTask.Priority);
-        Assert.Equal(expectedChangedCategory, changedTask.Category);
-        Assert.Equal(expectedChangedDateTime, changedTask.DateTime);
+        Assert.Equal(changedStatus, changedTask.Status);
+        Assert.Equal(changedPriority, changedTask.Priority);
+        Assert.Equal(changedCategory, changedTask.Category);
+        Assert.Equal(changedDateTime, changedTask.DateTime);
 
         var deletedTaskResult = await new DeleteTaskCommand(_context)
             .ExecuteAsync(createdTask.Id);
@@ -59,27 +59,27 @@ public class TasksUseCasesTests
     private async Task<Domain.Task> TestCreateTask()
     {
         const string expectedText = "testText";
-        const TaskStatus expectedStatus = TaskStatus.ToDo;
-        const TaskPriority expectedPriority = TaskPriority.Medium;
-        var expectedCategory = new Category("Homework");
-        var expectedDateTime = DateTime.Now;
+        var status = new TaskStatus(Guid.NewGuid(), "ToDo");
+        var priority = new TaskPriority(Guid.NewGuid(), "Medium");
+        var category = new Category("Homework");
+        var dateTime = DateTime.Now;
 
         var createdTaskId = await new CreateTaskCommand(_context)
             .ExecuteAsync(new Domain.Task(
                 Guid.NewGuid(),
                 expectedText,
-                expectedStatus,
-                expectedPriority,
-                expectedCategory,
-                expectedDateTime));
+                status,
+                priority,
+                category,
+                dateTime));
 
         var createdTask = await _context.GetTaskById(createdTaskId);
 
         Assert.Equal(expectedText, createdTask.Text);
-        Assert.Equal(expectedStatus, createdTask.Status);
-        Assert.Equal(expectedPriority, createdTask.Priority);
-        Assert.Equal(expectedCategory, createdTask.Category);
-        Assert.Equal(expectedDateTime, createdTask.DateTime);
+        Assert.Equal(status, createdTask.Status);
+        Assert.Equal(priority, createdTask.Priority);
+        Assert.Equal(category, createdTask.Category);
+        Assert.Equal(dateTime, createdTask.DateTime);
 
         return createdTask;
     }
